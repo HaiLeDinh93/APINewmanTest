@@ -40,5 +40,6 @@ jobs:
     - name: Run POSTMAN collection
       run: |
        newman run ./newman/newmantest.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html 
-       dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
+
+#dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
     
