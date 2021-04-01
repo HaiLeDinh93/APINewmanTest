@@ -18,9 +18,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - uses: actions/setup-dotnet@v1
-    - run: dotnet build TestApi/APINewmanTest.sln --configuration Development
-    - run: dotnet run --project TestApi/TestApi.csproj --configuration Development
+    - name: Run Dot Net
+      uses: actions/setup-dotnet@v1
+      run: dotnet build TestApi/APINewmanTest.sln --configuration Development
+      run: dotnet run --project TestApi/TestApi.csproj --configuration Development
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@v1
