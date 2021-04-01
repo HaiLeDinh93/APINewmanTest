@@ -41,6 +41,6 @@ jobs:
     
     - name: Run POSTMAN collection
       run: |
-       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000 &
-       dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
+       dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
+       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000
     
