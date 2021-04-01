@@ -39,6 +39,6 @@ jobs:
     
     - name: Run POSTMAN collection
       run: |
-       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json
+       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json --delay-request  -n 2
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
     
