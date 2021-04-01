@@ -20,3 +20,4 @@ jobs:
     - uses: matt-ball/newman-action@master
       with:
         collection: newman/newmantest.postman_collection.json
+        environment: postman_environment.json
