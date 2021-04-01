@@ -24,12 +24,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:44388/WeatherForecast",
-					"protocol": "https",
+					"raw": "http://localhost:5000/WeatherForecast",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "44388",
+					"port": "5000",
 					"path": [
 						"WeatherForecast"
 					]
