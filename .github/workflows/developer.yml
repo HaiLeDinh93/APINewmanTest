@@ -16,8 +16,15 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - uses: actions/checkout@master
-    - uses: matt-ball/newman-action@master
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Run API Tests
+      id: run-newman
+      uses: anthonyvscode/newman-action@v1
       with:
         collection: newman/newmantest.postman_collection.json
-        environment: postman_environment.json
+        reporters: cli
+
+    - name: Output summary to console
+      run: echo ${{ steps.run-newman.outputs.summary }}
