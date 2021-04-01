@@ -25,7 +25,6 @@ jobs:
 
     - run: dotnet build ./TestApi/TestApi.csproj --configuration Development --no-restore
     
-    - run: dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
     
     - name: set up node
       uses: actions/setup-node@v1
@@ -38,13 +37,8 @@ jobs:
     - name: Make Directory for results
       run: mkdir -p testResults
     
-    - name: Run API Tests
-      id: run-newman
-      uses: anthonyvscode/newman-action@v1
-      with:
-        delayRequest : 6000
-        collection: newman/newmantest.postman_collection.json
-        reporters: cli
-
-    - name: Output summary to console
-      run: echo ${{ steps.run-newman.outputs.summary }}
+    - name: Run POSTMAN collection
+      run: |
+       dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore
+       newman run ./newman/newmantest.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html 
+    
