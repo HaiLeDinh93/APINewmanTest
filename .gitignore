@@ -1,8 +1,5 @@
 
 .vs/**
 .vs
-.vs/APINewmanTest/v16/.suo
-TestApi/obj/Debug/net5.0/project.razor.json
-.vs/APINewmanTest/v16/.suo
-TestApi/obj/Debug/net5.0/TestApi.assets.cache
-TestApi/obj/Debug/net5.0/TestApi.csprojAssemblyReference.cache
+TestApi/obj/*
+TestApi/bin/*
