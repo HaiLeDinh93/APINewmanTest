@@ -35,4 +35,3 @@ jobs:
 
     - name: Output summary to console
       run: echo ${{ steps.run-newman.outputs.summary }}
-        collection: newman/newmantest.postman_collection.json
