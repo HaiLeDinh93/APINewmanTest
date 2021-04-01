@@ -1,0 +1,6 @@
+
+.vs/**
+.vs
+TestApi/obj/*
+TestApi/bin/*
+testResults/report.html
