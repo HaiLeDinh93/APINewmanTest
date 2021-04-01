@@ -43,7 +43,9 @@ jobs:
       run: |
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
        newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000 -r htmlextra --reporter-htmlextra-export ./testResults/report.html 
+    
     - name: Output the run Details
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2
       with: 
        name: RunReports
