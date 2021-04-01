@@ -21,8 +21,9 @@ jobs:
     
     - name: Setup Dot Net
       uses: actions/setup-dotnet@v1
+    - run: dotnet restore ./TestApi.sln
 
-    - run: dotnet build APINewmanTest.sln --configuration Development
+    - run: dotnet build ./TestApi/TestApi.csproj --configuration Development
 
     - run: dotnet run --project ./TestApi/TestApi.csproj --configuration Development
     
