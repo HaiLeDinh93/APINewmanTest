@@ -18,13 +18,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-
-    - name: Run API Tests
+    
+    - uses: matt-ball/newman-action@master
       id: run-newman
-      uses: anthonyvscode/newman-action@v1
       with:
         collection: newman/newmantest.postman_collection.json
-        reporters: cli
+        environment: postman_environment.json
 
     - name: Output summary to console
       run: echo ${{ steps.run-newman.outputs.summary }}
