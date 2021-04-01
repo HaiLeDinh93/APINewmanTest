@@ -28,7 +28,7 @@ jobs:
     - run: dotnet build ./TestApi/TestApi.csproj --configuration Development --no-restore
     
     
-    - name: set up node
+    - name: Set up node
       uses: actions/setup-node@v1
     
     - name: Install newman
@@ -42,5 +42,5 @@ jobs:
     - name: Run POSTMAN collection
       run: |
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
-       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000
+       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000 -r htmlextra
     
