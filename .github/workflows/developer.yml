@@ -48,12 +48,12 @@ jobs:
       if: ${{ always() }}
       uses: bryannice/gitactions-jira-issue-creation@master
       env:
-        JIRA_ACCOUNT_URL: https://iectech.atlassian.net/jira/software/projects/TA/boards/108
-        JIRA_API_TOKEN: hyL1H3evOdKnkwc8cIUAC1DF
+        JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
+        JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
         JIRA_ISSUE_ATTACHMENT: testResults/report.html
         JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
         JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
         JIRA_ISSUE_TYPE: Demo'ing Jira Issue Creation
-        JIRA_PROJECT: jira-issue-creation
-        JIRA_USERNAME: user@email.com
+        JIRA_PROJECT: ApiAutoTest
+        JIRA_USERNAME: hailedinh.uit@gmail.com
     
