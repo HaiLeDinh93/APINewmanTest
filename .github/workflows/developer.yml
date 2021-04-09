@@ -49,8 +49,7 @@ jobs:
     - name: Run Auto Test
       run: |
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
-       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json --delay-request 1000
-       --insecure -r htmlextra --reporter-htmlextra-export ./testResults/report_${{ steps.time.outputs.time }}.html 
+       newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json --insecure --delay-request 1000 -r htmlextra --reporter-htmlextra-export ./testResults/report_${{ steps.time.outputs.time }}.html 
     
     - name: Add Bug To Jira
       if: ${{ failure() }}
