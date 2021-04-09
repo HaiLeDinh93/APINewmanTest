@@ -50,7 +50,7 @@ jobs:
       env:
         JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
         JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
-        #JIRA_ISSUE_ATTACHMENT: testResults/report.html
+        JIRA_ISSUE_ATTACHMENT: testResults/report.html
         JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
         JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
         JIRA_ISSUE_TYPE: Task
