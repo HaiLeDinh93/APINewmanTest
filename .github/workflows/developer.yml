@@ -82,7 +82,7 @@ jobs:
         server_address: smtp.gmail.com
         server_port: 465
         username: hailedinh.uit@gmail.com
-        password: CaThangTu
+        password: gpvrnaphhnmkstas
         subject: Github Actions job result
         # Read file contents as body:
         body: testResults/report_${{ steps.time.outputs.time }}.html
