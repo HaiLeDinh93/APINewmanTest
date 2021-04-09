@@ -44,16 +44,26 @@ jobs:
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
        newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure -r htmlextra --reporter-htmlextra-export ./testResults/report.html 
     
-    - name: Add Bug To Jira
-      if: ${{ failure() }}
-      uses: bryannice/gitactions-jira-issue-creation@master
-      env:
-        JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
-        JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
-        JIRA_ISSUE_ATTACHMENT: testResults
-        JIRA_ISSUE_DESCRIPTION: New Bug From Git
-        JIRA_ISSUE_SUMMARY: New Bug
-        JIRA_ISSUE_TYPE: Bug
-        JIRA_PROJECT: AP
-        JIRA_USERNAME: hailedinh.uit@gmail.com
+    #- name: Add Bug To Jira
+    #  if: ${{ failure() }}
+    #  uses: bryannice/gitactions-jira-issue-creation@master
+    #  env:
+    #    JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
+    #    JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
+    #    JIRA_ISSUE_ATTACHMENT: testResults/report.html
+    #    JIRA_ISSUE_DESCRIPTION: New Bug From Git
+    #    JIRA_ISSUE_SUMMARY: New Bug
+    #    JIRA_ISSUE_TYPE: Bug
+    #    JIRA_PROJECT: AP
+    #    JIRA_USERNAME: hailedinh.uit@gmail.com
+
+    - name: Copy File
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.DEV_HOST }}
+        username: ${{ secrets.DEV_USERNAME }}
+        port: ${{ secrets.DEV_PORT }}
+        key: ${{ secrets.DEV_KEY }}
+        source: "testResults/report.html"
+        target: "E:\Shared"
     
