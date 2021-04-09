@@ -63,7 +63,7 @@ jobs:
         JIRA_ISSUE_TYPE: Bug
         JIRA_PROJECT: AP
         JIRA_USERNAME: hailedinh.uit@gmail.com
-
+# send file
     - name: Copy File
       if: ${{ always() }}
       uses: appleboy/scp-action@master
@@ -73,7 +73,7 @@ jobs:
         port: ${{ secrets.DEV_PORT }}
         key: ${{ secrets.DEV_KEY }}
         source: "testResults/report_${{ steps.time.outputs.time }}.html"
-        target: "Report_Test"
+        target: "Report_Test" 
         overwrite: true
 
     - name: Send mail
