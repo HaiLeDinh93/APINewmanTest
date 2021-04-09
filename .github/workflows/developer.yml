@@ -74,7 +74,6 @@ jobs:
         key: ${{ secrets.DEV_KEY }}
         source: "testResults/report_${{ steps.time.outputs.time }}.html"
         target: "Report_Test"
-        strip_components: 1
         overwrite: true
 
     - name: Send mail
