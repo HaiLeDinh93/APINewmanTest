@@ -85,9 +85,9 @@ jobs:
         password: gpvrnaphhnmkstas
         subject: Github Actions job result
         # Read file contents as body:
-        body: testResults/report_${{ steps.time.outputs.time }}.html
+        body: file://testResults/report_${{ steps.time.outputs.time }}.html
         to: Le.Dinh.Hai@carmd.com
-        from: Luke Skywalker # <user@example.com>
+        from: CarMD Testing # <user@example.com>
         # Optional unsigned/invalid certificates allowance:
         ignore_cert: true
         # Optional content type (defaults to text/plain):
