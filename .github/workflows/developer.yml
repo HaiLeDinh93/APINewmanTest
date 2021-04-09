@@ -54,18 +54,18 @@ jobs:
     
       
 
-    #- name: Add Bug To Jira
-    #  if: ${{ failure() }}
-    #  uses: bryannice/gitactions-jira-issue-creation@master
-    #  env:
-    #    JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
-    #    JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
-    #    JIRA_ISSUE_ATTACHMENT: testResults/report.html
-    #    JIRA_ISSUE_DESCRIPTION: New Bug From Git
-    #    JIRA_ISSUE_SUMMARY: New Bug
-    #    JIRA_ISSUE_TYPE: Bug
-    #    JIRA_PROJECT: AP
-    #    JIRA_USERNAME: hailedinh.uit@gmail.com
+    - name: Add Bug To Jira
+      if: ${{ failure() }}
+      uses: bryannice/gitactions-jira-issue-creation@master
+      env:
+        JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
+        JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
+        JIRA_ISSUE_ATTACHMENT: testResults/report.html
+        JIRA_ISSUE_DESCRIPTION: New Bug From Git
+        JIRA_ISSUE_SUMMARY: New Bug
+        JIRA_ISSUE_TYPE: Bug
+        JIRA_PROJECT: AP
+        JIRA_USERNAME: hailedinh.uit@gmail.com
 
     - name: Copy File
       if: ${{ always() }}
@@ -75,6 +75,6 @@ jobs:
         username: ${{ secrets.DEV_USERNAME }}
         port: ${{ secrets.DEV_PORT }}
         key: ${{ secrets.DEV_KEY }}
-        source: "testResults/*.html"
-        target: "E:\\Shared"
+        source: "testResults/report_${{ steps.time.outputs.time }}.html"
+        target: "Report_Test"
     
