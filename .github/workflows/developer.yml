@@ -44,11 +44,16 @@ jobs:
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
        newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure --delay-request 6000 -r htmlextra --reporter-htmlextra-export ./testResults/report.html 
     
-    - name: Output the run Details
+    - name: Jira Creation Demo
       if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with: 
-       name: RunReports
-       path: testResults
-    
+      uses: bryannice/gitactions-jira-issue-creation@master
+      env:
+        JIRA_ACCOUNT_URL: https://iectech.atlassian.net/jira/software/projects/TA/boards/108
+        JIRA_API_TOKEN: hyL1H3evOdKnkwc8cIUAC1DF
+        JIRA_ISSUE_ATTACHMENT: testResults/report.html
+        JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
+        JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
+        JIRA_ISSUE_TYPE: Demo'ing Jira Issue Creation
+        JIRA_PROJECT: jira-issue-creation
+        JIRA_USERNAME: user@email.com
     
