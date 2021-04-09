@@ -51,16 +51,13 @@ jobs:
        dotnet run --project ./TestApi/TestApi.csproj --configuration Development --no-restore &
        newman run ./test/newmantest.postman_collection.json -e ./test/local.postman_environment.json  --insecure -r htmlextra --reporter-htmlextra-export ./testResults/report_${{ steps.time.outputs.time }}.html 
     
-    
-      
-
     - name: Add Bug To Jira
       if: ${{ failure() }}
       uses: bryannice/gitactions-jira-issue-creation@master
       env:
         JIRA_ACCOUNT_URL: https://hailed.atlassian.net/
         JIRA_API_TOKEN: CZE9TMwthQzTGw8d0FJi9C76
-        JIRA_ISSUE_ATTACHMENT: testResults/report.html
+        JIRA_ISSUE_ATTACHMENT: testResults/report_${{ steps.time.outputs.time }}.html
         JIRA_ISSUE_DESCRIPTION: New Bug From Git
         JIRA_ISSUE_SUMMARY: New Bug
         JIRA_ISSUE_TYPE: Bug
@@ -77,4 +74,25 @@ jobs:
         key: ${{ secrets.DEV_KEY }}
         source: "testResults/report_${{ steps.time.outputs.time }}.html"
         target: "Report_Test"
+
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v2
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: hailedinh.uit@gmail.com
+        password: CaThangTu
+        subject: Github Actions job result
+        # Read file contents as body:
+        body: testResults/report_${{ steps.time.outputs.time }}.html
+        to: Le.Dinh.Hai@carmd.com
+        from: Luke Skywalker # <user@example.com>
+        # Optional unsigned/invalid certificates allowance:
+        ignore_cert: true
+        # Optional content type (defaults to text/plain):
+        content_type: text/html
+        # Optional converting Markdown to HTML (set content_type to text/html too):
+        convert_markdown: true
+        # Optional attachments:
+        attachments: testResults/report_${{ steps.time.outputs.time }}.html
     
