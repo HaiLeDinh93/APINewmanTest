@@ -6,14 +6,44 @@
 	},
 	"item": [
 		{
-			"name": "WeatherForecast",
+			"name": "WeatherForecast Success",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"status code is 200\", function(){\r",
-							"pm.response.to.have.status(400)\r",
+							"pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/WeatherForecast",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"WeatherForecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "WeatherForecast Fail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code is 200\", function(){\r",
+							"pm.response.to.have.status(200)\r",
 							"});"
 						],
 						"type": "text/javascript"
