@@ -54,6 +54,6 @@ jobs:
         JIRA_ISSUE_DESCRIPTION: Demo'ing Jira Issue Creation
         JIRA_ISSUE_SUMMARY: Demo'ing Jira Issue Creation
         JIRA_ISSUE_TYPE: Task
-        JIRA_PROJECT: ApiAutoTest (AP)
+        JIRA_PROJECT: AP
         JIRA_USERNAME: hailedinh.uit@gmail.com
     
